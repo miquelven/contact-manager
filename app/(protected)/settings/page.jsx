@@ -1,4 +1,5 @@
 import { auth, signOut } from "@/auth";
+import { authRoutes } from "@/routes";
 
 export default async function SettingsPage() {
   const session = await auth();
@@ -11,7 +12,7 @@ export default async function SettingsPage() {
         action={async () => {
           "use server";
 
-          await signOut();
+          await signOut({ redirectTo: authRoutes[0] });
         }}
       >
         <button>Sign out</button>
