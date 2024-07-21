@@ -2,17 +2,12 @@
 
 import { useRouter } from "next/navigation";
 
-export default function LoginButton({ children, mode = "redirect", asChild }) {
+export default function LoginButton({ children }) {
   const router = useRouter();
 
   const handleClick = () => {
     router.push("/auth/login");
   };
-
-  if (mode == "modal") {
-    return <span>TODO: Implement modal </span>;
-  }
-
   return (
     <span onClick={handleClick} className="cursor-pointer">
       {children}
