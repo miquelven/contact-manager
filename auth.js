@@ -13,6 +13,20 @@ export const {
   signOut,
 } = NextAuth({
   callbacks: {
+    async session({ session, token }) {
+      if (token.id) {
+        try {
+          const user = await getUserById(token.id);
+          session.user = user;
+          session.contacts = user.contacts;
+        } catch (error) {
+          console.error("Error fetching user or contacts:", error);
+        }
+      } else {
+        console.warn("No user ID in token");
+      }
+      return session;
+    },
     async signIn({ user, account }) {
       if (account?.provider !== "credentials") return true;
 
@@ -22,7 +36,10 @@ export const {
 
       return true;
     },
-    async jwt({ token }) {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
       return token;
     },
   },
