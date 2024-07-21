@@ -16,13 +16,15 @@ export default function Home() {
       <div className="space-y-6 text-center">
         <h1
           className={cn(
-            "text-4xl  font-semibold text-white drop-shadow-md sm:text-6xl",
+            "text-3xl  font-semibold text-white drop-shadow-md sm:text-6xl",
             font.className
           )}
         >
-          📂 Contact Manager
+          📂 Gerenciador de Contatos
         </h1>
-        <p className="text-white text-lg">O seu gerenciador de contatos</p>
+        <p className="text-white text-md sm:text-lg">
+          O seu gerenciador de contatos
+        </p>
         <div>
           <LoginButton>
             <Button variant="secondary" size="lg">
