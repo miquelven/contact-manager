@@ -52,7 +52,6 @@ export default function NewVerificationForm() {
       headerLabel="Confirme sua verificação"
       backButtonLabel="Voltar ao login"
       backButtonHref="/auth/login"
-      isLoading={isPending}
     >
       <div className="flex items-center w-full justify-center">
         {!success && !error && <BeatLoader />}
