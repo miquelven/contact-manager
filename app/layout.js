@@ -10,8 +10,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="pt-BR">
+      <body
+        className={`min-h-screen bg-gradient-to-tr from-blue-300 to-blue-800 ${inter.className}`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
