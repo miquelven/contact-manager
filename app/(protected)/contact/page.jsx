@@ -1,7 +1,7 @@
 import { auth, signOut } from "@/auth";
 import { authRoutes } from "@/routes";
 
-export default async function SettingsPage() {
+export default async function ContactPage() {
   const session = await auth();
 
   return (
