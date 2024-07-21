@@ -48,9 +48,11 @@ export default function RegisterForm() {
 
   return (
     <CardWrapper
-      headerLabel="Create an account"
-      backButtonLabel="Already have a account?"
+      headerTitle="Registrar"
+      headerLabel="Crie uma conta"
+      backButtonLabel="Já tem uma conta?"
       backButtonHref="/auth/login"
+      isLoading={isPending}
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -60,11 +62,11 @@ export default function RegisterForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder="Miquelven Silva"
+                      placeholder="examplo"
                       type="text"
                       disabled={isPending}
                     />
@@ -82,7 +84,7 @@ export default function RegisterForm() {
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder="miquelven.example@gmail.com"
+                      placeholder="examplo@gmail.com"
                       type="email"
                       disabled={isPending}
                     />
@@ -96,7 +98,7 @@ export default function RegisterForm() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Senha</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -113,7 +115,7 @@ export default function RegisterForm() {
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button type="submit" className="w-full" disabled={isPending}>
-            Create an account
+            Criar
           </Button>
         </form>
       </Form>

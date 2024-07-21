@@ -18,6 +18,7 @@ import { Button } from "../ui/button";
 import FormError from "../form-error";
 import FormSuccess from "../form-success";
 import { login } from "@/actions/login";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [isPending, startTransition] = useTransition();
@@ -47,9 +48,11 @@ export default function LoginForm() {
 
   return (
     <CardWrapper
-      headerLabel="Welcome back"
-      backButtonLabel="Don't have an account?"
+      headerTitle="Entrar"
+      headerLabel="Bem vindo de volta"
+      backButtonLabel="Não tem uma conta?"
       backButtonHref="/auth/register"
+      isLoading={isPending}
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -63,7 +66,7 @@ export default function LoginForm() {
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder="miquelven.example@gmail.com"
+                      placeholder="examplo@gmail.com"
                       type="email"
                       disabled={isPending}
                     />
@@ -77,7 +80,7 @@ export default function LoginForm() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Senha</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -87,6 +90,14 @@ export default function LoginForm() {
                     />
                   </FormControl>
                   <FormMessage />
+                  <Button
+                    size="sm"
+                    variant="link"
+                    asChild
+                    className="px-0  font-semibold"
+                  >
+                    <Link href="/auth/reset">Esqueceu a senha?</Link>
+                  </Button>
                 </FormItem>
               )}
             />
