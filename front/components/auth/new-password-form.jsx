@@ -13,12 +13,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/front/components/ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import FormError from "../form-error";
 import FormSuccess from "../form-success";
-import { newPassword } from "@/actions/new-password";
+import { newPassword } from "@/front/actions/new-password";
 
 export default function NewPasswordForm() {
   const searchParams = useSearchParams();
