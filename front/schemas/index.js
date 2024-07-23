@@ -91,3 +91,62 @@ export const RegisterSchema = z.object({
       message: "Máximo de 100 caracteres permitido",
     }),
 });
+
+export const AddContactSchema = z.object({
+  email: z
+    .string()
+    .email({
+      message: "É necessário um email válido",
+    })
+    .min(1, {
+      message: "O email é obrigatório",
+    }),
+
+  name: z
+    .string()
+    .min(4, {
+      message: "O nome é obrigatório e deve ter no mínimo 4 caracteres",
+    })
+    .max(100, {
+      message: "Máximo de 100 caracteres permitido",
+    }),
+  phone: z.string().min(10, {
+    message: "Número de telefone inválido",
+  }),
+  status: z
+    .any()
+    .refine(
+      (value) => value !== undefined && value !== null && value !== false,
+      {
+        message: "O status é obrigatório",
+      }
+    ),
+});
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export const EditContactSchema = z.object({
+  email: z
+    .string()
+    .optional()
+    .refine((val) => !val || val.length > 0, {
+      message: "O email é obrigatório",
+    })
+    .refine((val) => !val || emailRegex.test(val), {
+      message: "É necessário um email válido",
+    }),
+  name: z
+    .string()
+    .optional()
+    .refine((val) => !val || (val.length >= 4 && val.length <= 100), {
+      message: "O nome é obrigatório e deve ter entre 4 e 100 caracteres",
+    }),
+
+  phone: z
+    .string()
+    .optional()
+    .refine((val) => !val || val.length >= 10, {
+      message: "Número de telefone inválido",
+    }),
+  status: z.any().optional(),
+});
