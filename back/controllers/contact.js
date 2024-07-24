@@ -17,13 +17,14 @@ export const getContacts = (req, res) => {
 export const addContact = (req, res) => {
   const { userId, name, email, phone, status } = req.body;
 
+  // Atualiza a consulta para considerar o userId na verificação
   const checkQuery = `
     SELECT COUNT(*) AS count 
     FROM Contact 
-    WHERE email = ? OR phone = ?
+    WHERE (email = ? OR phone = ?) AND userId = ?
   `;
 
-  db.query(checkQuery, [email, phone], (err, results) => {
+  db.query(checkQuery, [email, phone, userId], (err, results) => {
     if (err) return res.json(err);
 
     const contactExists = results[0].count > 0;
@@ -31,7 +32,9 @@ export const addContact = (req, res) => {
     if (contactExists) {
       return res
         .status(400)
-        .json("Já existe um contato com esse email ou telefone.");
+        .json(
+          "Já existe um contato com esse email ou telefone para este usuário."
+        );
     }
 
     const insertQuery =
