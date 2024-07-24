@@ -8,7 +8,7 @@ const useGetContacts = (userId) => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:8800/${userId}`);
+      const response = await axios.get(`${process.env.BACKEND_URL} ${userId}`);
       setData(response.data);
     } catch (err) {
       setError(err);
