@@ -16,7 +16,7 @@ import { addContact } from "@/lib/fetchData";
 import FormError from "../form-error";
 import FormSuccess from "../form-success";
 
-const ImportModal = ({ onclick }) => {
+const ImportModal = ({ onclick, userId }) => {
   const [_, startTransition] = useTransition();
 
   const input = useRef(null);
@@ -64,7 +64,7 @@ const ImportModal = ({ onclick }) => {
       return;
     }
 
-    const { email, phone, name, userId, status } = csvData[0];
+    const { email, phone, name, status } = csvData[0];
     setError("");
 
     startTransition(() => {
