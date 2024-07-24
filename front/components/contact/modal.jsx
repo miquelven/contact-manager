@@ -62,7 +62,6 @@ const Modal = ({ userId, id, buttonText, title, label, onclick }) => {
       });
     } else {
       startTransition(() => {
-        console.log("Hello");
         addContact(email, phone, name, userId, status).then((data) => {
           if (data) {
             data.success ? setSuccess(data.success) : setError(data.erro);
