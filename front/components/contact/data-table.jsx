@@ -268,26 +268,30 @@ function TableData({ id }) {
                 </DropdownMenu>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <ImportModal onclick={handleClick} />
+                    <ImportModal onclick={handleClick} userId={id} />
                   </DropdownMenuTrigger>
                 </DropdownMenu>
               </div>
             </div>
             <div className="rounded-md border">
               <Table>
-                <TableHeader>
+                <TableHeader className="bg-black/10 shadow shadow-black/15">
                   {table.getHeaderGroups().map((headerGroup) => (
                     <TableRow key={headerGroup.id}>
                       {headerGroup.headers.map((header) => (
                         <TableHead key={header.id}>
-                          {header.isPlaceholder
-                            ? null
-                            : flexRender(
+                          {header.isPlaceholder ? null : (
+                            <span className="text-medium text-black">
+                              {flexRender(
                                 header.column.columnDef.header,
                                 header.getContext()
                               )}
+                            </span>
+                          )}
                         </TableHead>
                       ))}
+                      {/* add new column */}
+                      <TableHead></TableHead>
                     </TableRow>
                   ))}
                 </TableHeader>
