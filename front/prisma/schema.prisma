@@ -49,6 +49,11 @@ model User {
   password      String?
   emailVerified DateTime? @map("email_verified")
   image         String?
+    city          String?
+  neighborhood  String?
+  street        String?
+  zipCode       String?
+  number        String?
   contacts      Contact[]
   accounts      Account[]
 }

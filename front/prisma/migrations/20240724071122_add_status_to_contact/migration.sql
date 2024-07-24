@@ -1,0 +1,9 @@
+-- AlterTable
+ALTER TABLE `Contact` MODIFY `status` BOOLEAN NOT NULL DEFAULT false;
+
+-- AlterTable
+ALTER TABLE `User` ADD COLUMN `city` VARCHAR(191) NULL,
+    ADD COLUMN `neighborhood` VARCHAR(191) NULL,
+    ADD COLUMN `number` VARCHAR(191) NULL,
+    ADD COLUMN `street` VARCHAR(191) NULL,
+    ADD COLUMN `zipCode` VARCHAR(191) NULL;
