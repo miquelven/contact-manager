@@ -21,10 +21,9 @@ import { login } from "@/actions/login";
 import Link from "next/link";
 
 export default function LoginForm() {
-  const [isPending, startTransition] = useTransition();
-
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [isPending, startTransition] = useTransition();
 
   const form = useForm({
     resolver: zodResolver(LoginSchema),
