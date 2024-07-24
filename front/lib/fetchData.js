@@ -29,7 +29,7 @@ export async function addContact(email, phone, name, userId, status) {
         status,
       }
     );
-    if (response.data.length > 0) {
+    if (response.data) {
       return { success: "Contato salvo com sucesso!" };
     }
   } catch (error) {
@@ -63,5 +63,31 @@ export async function updateContact(userId, id, name, email, phone, status) {
   } catch (error) {
     console.error("Error fetching data:", error);
     return { erro: "Erro ao atualizar contato." };
+  }
+}
+
+export async function updateLocation(data) {
+  const { id, city, street, neighborhood, number, zipCode } = data;
+
+  if (!city && !street && !neighborhood && !number && !zipCode) {
+    return { erro: "Pelo menos um campo deve ser preenchido para atualizar." };
+  }
+
+  try {
+    const response = await axios.put(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}${id}`,
+      {
+        city,
+        street,
+        neighborhood,
+        number,
+        zipCode,
+      }
+    );
+
+    return { success: response.data };
+  } catch (error) {
+    console.error("Error updating data:", error);
+    return { erro: "Erro ao atualizar localização." };
   }
 }
