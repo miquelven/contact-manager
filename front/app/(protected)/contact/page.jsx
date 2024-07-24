@@ -1,9 +1,9 @@
-import { auth } from "@/auth";
+import { auth, signOut } from "@/auth";
 import Header from "@/components/auth/header";
-import TableData from "@/components/contact/data-table";
+import DataTableDemo from "@/components/contact/data-table";
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-// import { authRoutes } from "@/routes";
+import { authRoutes } from "@/routes";
 
 export default async function ContactPage() {
   const session = await auth();
@@ -15,9 +15,19 @@ export default async function ContactPage() {
           <Header title="Tabela de Contatos" />
         </CardHeader>
         <CardContent>
-          {session.user.id && <TableData id={session.user.id} />}
+          {session.user.id && <DataTableDemo id={session.user.id} />}
         </CardContent>
       </Card>
+
+      <form
+        action={async () => {
+          "use server";
+
+          await signOut({ redirectTo: authRoutes[0] });
+        }}
+      >
+        <button>Sign out</button>
+      </form>
     </div>
   );
 }
