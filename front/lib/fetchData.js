@@ -3,7 +3,7 @@ import axios from "axios";
 export async function deleteContact(userId, id) {
   try {
     const response = await axios.delete(
-      `${process.env.BACKEND_URL}${userId}/${id}`
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}${userId}/${id}`
     );
     if (response.data.length > 0) {
       console.log(response.data);
@@ -19,13 +19,16 @@ export async function deleteContact(userId, id) {
 
 export async function addContact(email, phone, name, userId, status) {
   try {
-    const response = await axios.post(`${process.env.BACKEND_URL}`, {
-      userId,
-      name,
-      email,
-      phone,
-      status,
-    });
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}`,
+      {
+        userId,
+        name,
+        email,
+        phone,
+        status,
+      }
+    );
     if (response.data.length > 0) {
       return { success: "Contato salvo com sucesso!" };
     }
@@ -42,7 +45,7 @@ export async function updateContact(userId, id, name, email, phone, status) {
 
   try {
     const response = await axios.put(
-      `${process.env.BACKEND_URL}${userId}/${id}`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}${userId}/${id}`,
       {
         name,
         email,
