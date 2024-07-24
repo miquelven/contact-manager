@@ -150,3 +150,11 @@ export const EditContactSchema = z.object({
     }),
   status: z.any().optional(),
 });
+
+export const EditUserLocationSchema = z.object({
+  cidade: z.string().optional(),
+  rua: z.string().optional(),
+  bairro: z.string().optional(),
+  numero: z.string().optional(),
+  cep: z.string().optional(),
+});
