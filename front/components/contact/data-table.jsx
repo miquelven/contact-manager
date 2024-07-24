@@ -86,7 +86,7 @@ const columns = [
   },
 ];
 
-function DataTableDemo({ id }) {
+function TableData({ id }) {
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
   const [columnVisibility, setColumnVisibility] = useState({});
@@ -336,4 +336,4 @@ function DataTableDemo({ id }) {
   );
 }
 
-export default DataTableDemo;
+export default TableData;
