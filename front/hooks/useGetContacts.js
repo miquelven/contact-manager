@@ -9,7 +9,9 @@ const useGetContacts = (userId) => {
   const fetchData = useCallback(async () => {
     console.log(`${process.env.NEXT_PUBLIC_BACKEND_URL}${userId}`);
     try {
-      const response = await axios.get(`${process.env.BACKEND_URL}${userId}`);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}${userId}`
+      );
       setData(response.data);
     } catch (err) {
       setError(err);
