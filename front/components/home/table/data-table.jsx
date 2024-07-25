@@ -32,7 +32,7 @@ import SearchBar from "./search-bar";
 import ImportModal from "./import-modal";
 import EditDeleteExportMenu from "./edit-delete-export-menu";
 import Image from "next/image";
-import tubeSpinner from "../../public/tube-spinner.svg";
+import tubeSpinner from "../../../public/tube-spinner.svg";
 
 const columns = [
   {
@@ -341,9 +341,9 @@ function TableData({ id }) {
                     <TableRow>
                       <TableCell
                         colSpan={columns.length}
-                        className="h-24 text-center"
+                        className="h-36  text-center"
                       >
-                        Não há contatos.
+                        <span className="text-lg">Adicione Contatos</span>
                       </TableCell>
                     </TableRow>
                   )}

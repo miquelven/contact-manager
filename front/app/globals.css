@@ -11,6 +11,31 @@
   -moz-appearance: textfield;
 }
 
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: #d9e8f3;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #2563eb;
+  border-radius: 15px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  cursor: grab;
+}
+
+html::-webkit-scrollbar-thumb:active {
+  cursor: grabbing;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

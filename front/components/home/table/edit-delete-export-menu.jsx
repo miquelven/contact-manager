@@ -5,7 +5,7 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { ArrowRightFromLine, MoreHorizontal, Trash2 } from "lucide-react";
 import Modal from "./modal";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { deleteContact } from "@/lib/fetchData";
 
 import React from "react";

@@ -57,7 +57,7 @@ export default function InfoUserArea({ data }) {
           asChild
           variant="outline"
         >
-          <Link href="/contact">Voltar</Link>
+          <Link href="/home">Voltar</Link>
         </Button>
         <FormInfoUser
           successMessage={successMessage}

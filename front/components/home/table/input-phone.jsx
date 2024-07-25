@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Input } from "../ui/input";
+import { Input } from "../../ui/input";
 
 export default function InputPhoneNumber({ value, onChange, ...rest }) {
   const [inputValue, setInputValue] = useState(value || "");
