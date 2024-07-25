@@ -10,6 +10,7 @@ import { deleteContact } from "@/lib/fetchData";
 
 import React from "react";
 import { parse } from "json2csv";
+import { useToast } from "@/components/ui/use-toast";
 
 const ExportCSVButton = ({ data, contactId }) => {
   const contact = data.filter((d) => d.id == contactId);
@@ -74,7 +75,18 @@ export default function EditDeleteExportMenu({
   contacts,
 }) {
   const handleDeleteContact = () => {
-    deleteContact(userId, id);
+    deleteContact(userId, id).then((data) => {
+      if (data) {
+        data.success
+          ? toast({
+              description: "Contato Deletado!",
+            })
+          : toast({
+              variant: "destructive",
+              description: "Algo deu errado!",
+            });
+      }
+    });
     onclick();
   };
 
