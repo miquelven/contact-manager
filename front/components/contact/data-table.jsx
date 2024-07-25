@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   flexRender,
   getCoreRowModel,
@@ -9,7 +9,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, Calendar, Download } from "lucide-react";
+import { ArrowUpDown, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -29,9 +29,10 @@ import useGetContacts from "@/hooks/useGetContacts";
 import { formatDate } from "@/lib/utils";
 import Modal from "./modal";
 import SearchBar from "./search-bar";
-import ButtonCsv from "./button-csv";
 import ImportModal from "./import-modal";
 import EditDeleteExportMenu from "./edit-delete-export-menu";
+import Image from "next/image";
+import tubeSpinner from "../../public/tube-spinner.svg";
 
 const columns = [
   {
@@ -95,8 +96,19 @@ function TableData({ id }) {
   const [statusFilter, setStatusFilter] = useState("all");
   const [createdAtFilter, setCreatedAtFilter] = useState("");
   const [updatedAtFilter, setUpdatedAtFilter] = useState("");
+  const [loadingValue, setLoadingValue] = useState(false);
 
   const { data: contacts, loading, error, refetch } = useGetContacts(id);
+
+  useEffect(() => {
+    if (loading == false) {
+      setTimeout(() => {
+        setLoadingValue(loading);
+      }, [500]);
+    } else {
+      setLoadingValue(loading);
+    }
+  }, [loading]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const filteredData = useMemo(() => {
@@ -155,12 +167,17 @@ function TableData({ id }) {
     },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loadingValue)
+    return (
+      <div className="h-[200px] w-full flex justify-center items-center">
+        <Image src={tubeSpinner} width={60} height={60} alt="Loading icon" />
+      </div>
+    );
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <>
-      {!loading && (
+      {!loadingValue && (
         <div>
           <div className="w-full ">
             <div className="flex items-center py-4">
