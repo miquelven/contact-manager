@@ -110,7 +110,7 @@ export const AddContactSchema = z.object({
     .max(100, {
       message: "Máximo de 100 caracteres permitido",
     }),
-  phone: z.string().min(10, {
+  phone: z.string().min(15, {
     message: "Número de telefone inválido",
   }),
   status: z
@@ -145,7 +145,7 @@ export const EditContactSchema = z.object({
   phone: z
     .string()
     .optional()
-    .refine((val) => !val || val.length >= 10, {
+    .refine((val) => !val || val.length >= 15, {
       message: "Número de telefone inválido",
     }),
   status: z.any().optional(),
