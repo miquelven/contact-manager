@@ -53,4 +53,4 @@
 
 </br>
 
-O projeto Gerenciador de Contatos é uma aplicação web desenvolvida para gerenciar contatos de forma eficiente. Utilizando tecnologias modernas, como Next.js, Node.js, e MySQL, a aplicação permite adicionar, editar, deletar e visualizar contatos de maneira prática.
+O Gerenciador de Contatos foi desenvolvido com o objetivo de simplificar o gerenciamento de contatos pessoais e profissionais. A aplicação oferece uma interface intuitiva e responsiva, facilitando o acesso e a organização das informações de contato. Com recursos como filtragem por data e sistema de autenticação robusto, o Gerenciador de Contatos é uma solução completa para quem precisa manter seus contatos sempre atualizados e acessíveis.
