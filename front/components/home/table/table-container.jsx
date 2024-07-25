@@ -1,16 +1,21 @@
-import Header from "../../auth/header";
-import { Card, CardContent, CardHeader } from "../../ui/card";
-import DataTableDemo from "@/components/contact/data-table";
+import { Card, CardContent } from "../../ui/card";
+import TableData from "./data-table";
 
 export default function TableContainer({ id }) {
   return (
-    <div className="min-h-[600px] h-[600px] w-[1200px] mx-auto mt-10">
-      <Card className="w-[300px] shadow-md sm:w-full py-10 ">
-        <CardHeader>
-          <Header title="Tabela de Contatos" />
-        </CardHeader>
-        <CardContent>{id && <DataTableDemo id={id} />}</CardContent>
+    <section
+      id="table"
+      className="min-h-[600px] scroll-mt-24 h-[600px] w-[1200px] mx-auto mt-96"
+    >
+      <div className="w-full text-center flex flex-col gap-3">
+        <span className="text-lg font-semibold text-blue-600">Tabela</span>
+        <h3 className="text-5xl font-bold text-center">Tabela de Contatos</h3>
+      </div>
+      <Card className="w-[300px] mt-14 shadow-md sm:w-full  ">
+        <CardContent>
+          <TableData id={id || null} />
+        </CardContent>
       </Card>
-    </div>
+    </section>
   );
 }
