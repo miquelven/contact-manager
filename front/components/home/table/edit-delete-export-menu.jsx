@@ -74,16 +74,18 @@ export default function EditDeleteExportMenu({
   onclick,
   contacts,
 }) {
+  const { toast } = useToast();
+
   const handleDeleteContact = () => {
     deleteContact(userId, id).then((data) => {
       if (data) {
         data.success
           ? toast({
-              description: "Contato Deletado!",
+              title: "Contato Deletado!",
             })
           : toast({
               variant: "destructive",
-              description: "Algo deu errado!",
+              title: "Algo deu errado!",
             });
       }
     });
@@ -108,7 +110,7 @@ export default function EditDeleteExportMenu({
           onclick={() => onclick()}
         />
         <Button
-          onClick={() => handleDeleteContact(userId, id)}
+          onClick={() => handleDeleteContact()}
           variant="outline"
           className="w-[116px]  flex items-center gap-3"
         >

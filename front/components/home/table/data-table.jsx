@@ -104,7 +104,7 @@ function TableData({ id }) {
     if (loading == false) {
       setTimeout(() => {
         setLoadingValue(loading);
-      }, [500]);
+      }, [1000]);
     } else {
       setLoadingValue(loading);
     }
