@@ -17,7 +17,7 @@ const createTransporter = () => {
 };
 
 export const sendPasswordResetEmail = async (email, token) => {
-  const resetLink = `${domain}/auth/new-password?token=${token}`;
+  const resetLink = `https://contact-manager-fk3i.vercel.app/auth/new-password?token=${token}`;
   const transporter = createTransporter();
 
   const mailData = {
@@ -37,7 +37,7 @@ export const sendPasswordResetEmail = async (email, token) => {
 };
 
 export const sendVerificationEmail = async (email, token) => {
-  const confirmLink = `${domain}/auth/new-verification?token=${token}`;
+  const confirmLink = `https://contact-manager-fk3i.vercel.app/auth/new-verification?token=${token}`;
   const transporter = createTransporter();
 
   const mailData = {
