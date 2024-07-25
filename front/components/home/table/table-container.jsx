@@ -1,5 +1,5 @@
-import Header from "../auth/header";
-import { Card, CardContent, CardHeader } from "../ui/card";
+import Header from "../../auth/header";
+import { Card, CardContent, CardHeader } from "../../ui/card";
 import DataTableDemo from "@/components/contact/data-table";
 
 export default function TableContainer({ id }) {

@@ -23,8 +23,8 @@ import { Input } from "@/components/ui/input";
 import { Plus, Pencil } from "lucide-react";
 import InputPhoneNumber from "./input-phone";
 import { addContact, updateContact } from "@/lib/fetchData";
-import FormError from "../form-error";
-import FormSuccess from "../form-success";
+import FormError from "../../form-error";
+import FormSuccess from "../../form-success";
 import { useState, useTransition } from "react";
 
 const Modal = ({ userId, id, buttonText, title, label, onclick }) => {

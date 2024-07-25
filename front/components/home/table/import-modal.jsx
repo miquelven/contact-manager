@@ -13,8 +13,8 @@ import Papa from "papaparse";
 import { Download } from "lucide-react";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { addContact } from "@/lib/fetchData";
-import FormError from "../form-error";
-import FormSuccess from "../form-success";
+import FormError from "../../form-error";
+import FormSuccess from "../../form-success";
 
 const ImportModal = ({ onclick, userId }) => {
   const [_, startTransition] = useTransition();

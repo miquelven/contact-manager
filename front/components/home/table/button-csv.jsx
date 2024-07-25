@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Papa from "papaparse";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { Download } from "lucide-react";
-import ImportModal from "./import-modal";
+import ImportModal from "../import-modal";
 
 export default function ButtonCsv() {
   const [csvData, setCsvData] = useState([]);
