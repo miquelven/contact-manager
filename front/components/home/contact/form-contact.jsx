@@ -1,71 +1,97 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import emailjs from "@emailjs/browser";
+import { useToast } from "@/components/ui/use-toast";
+
+const schema = z.object({
+  name: z.string().min(1, "O nome é obrigatório."),
+  email: z.string().email("O email não é válido."),
+  message: z.string().min(1, "A mensagem é obrigatória."),
+});
 
 export default function FormContact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const { toast } = useToast();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const sendEmail = (data) => {
+    const templateParams = {
+      message: data.message,
+      email: data.email,
+    };
+
+    emailjs.send(
+      "service_j9fygzm",
+      "template_el44meo",
+      templateParams,
+      "W7PLvOdvqRzXPUDr1"
+    );
   };
 
+  const onSubmit = (values) => {
+    if (values !== null) {
+      sendEmail(values);
+      toast({
+        title: "Email enviado!",
+      });
+    }
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
   return (
-    <form onSubmit={() => {}} className="space-y-4 w-[400px] ">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-[400px]">
       <div>
         <label
           htmlFor="name"
-          className="block text-sm font-medium text-gray-700   mb-3"
+          className="block text-sm font-medium text-gray-700 mb-3"
         >
           Nome
         </label>
-        <Input
-          id="name"
-          name="name"
-          type="text"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full"
-        />
+        <Input id="name" {...register("name")} className="mt-1 block w-full" />
+        {errors.name && (
+          <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+        )}
       </div>
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-gray-700  mt-10 mb-3"
+          className="block text-sm font-medium text-gray-700 mt-10 mb-3"
         >
           Email
         </label>
         <Input
           id="email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
+          {...register("email")}
           className="mt-1 block w-full"
         />
+        {errors.email && (
+          <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+        )}
       </div>
       <div>
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-gray-700  mt-10 mb-3"
+          className="block text-sm font-medium text-gray-700 mt-10 mb-3"
         >
           Mensagem
         </label>
         <Textarea
           id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          required
+          {...register("message")}
           className="mt-1 block w-full"
         />
+        {errors.message && (
+          <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+        )}
       </div>
       <div>
         <Button
