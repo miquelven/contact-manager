@@ -141,7 +141,7 @@ function TableData({ id }) {
     <>
       {!loadingValue && (
         <div>
-          <div className="w-full ">
+          <div className="w-full max-xl:flex max-xl:flex-col max-xl:gap-8 max-md:block  ">
             <DataFiltered
               id={id}
               handleClick={handleClick}
@@ -149,8 +149,8 @@ function TableData({ id }) {
               table={table}
               contacts={contacts}
             />
-            <div className="rounded-md border">
-              <Table>
+            <div className="rounded-md border max-md:min-w-[1100px] ">
+              <Table className="max-md:min-w-[1100px]  ">
                 <TableHeader className="bg-black/10 shadow shadow-black/15">
                   {table.getHeaderGroups().map((headerGroup) => (
                     <TableRow key={headerGroup.id}>

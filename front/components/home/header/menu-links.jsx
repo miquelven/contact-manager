@@ -26,12 +26,12 @@ export default function MenuLinks() {
   ];
 
   return (
-    <ul className="flex gap-5">
+    <ul className="flex gap-5 max-sm:gap-0">
       {links.map((link) => (
         <li key={link.id}>
           <Button variant="link" asChild>
             <Link href={link.ref}>
-              <span className="font-medium text-black/80 hover:text-black">
+              <span className="transition-all duration-300 font-medium text-black hover:text-blue-600 max-sm:text-xs">
                 {link.label}
               </span>
             </Link>

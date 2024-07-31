@@ -30,7 +30,7 @@ export default function ToTopButton() {
   return (
     <button
       onClick={scrollTop}
-      className={`transition-all duration-500 bg-blue-600 fixed right-10 bottom-11 p-4 rounded-md shadow-sm shadow-black/20 text-white hover:bottom-12 hover:bg-black/30
+      className={`transition-all duration-500 bg-blue-600 fixed right-10 bottom-11 p-4 rounded-md shadow-sm shadow-black/20 text-white hover:bottom-12 hover:bg-black/30 max-sm:p-2 max-sm:right-5
             ${showScroll ? "opacity-100 z-30" : "opacity-0 z-[-1]"}
         `}
     >

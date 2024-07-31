@@ -68,7 +68,10 @@ export default function FormContact() {
         />
       </div>
       <div>
-        <Button type="submit" className="w-full bg-blue-800 text-white">
+        <Button
+          type="submit"
+          className="w-full bg-blue-800 text-white max-sm:mt-7"
+        >
           Enviar
         </Button>
       </div>

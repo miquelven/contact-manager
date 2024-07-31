@@ -54,7 +54,6 @@ export default function DataFiltered({
         );
       });
     }
-    console.log("Hello");
     return [];
   }, [contacts, filterValue, statusFilter, createdAtFilter, updatedAtFilter]);
 
@@ -69,109 +68,115 @@ export default function DataFiltered({
   }, [filteredData]);
 
   return (
-    <div className="flex items-center py-4">
+    <div className="flex items-center py-4 max-xl:flex-col max-xl:items-start max-xl:w-full max-md:flex-row max-md:items-center max-md:w-auto ">
       <SearchBar filterValue={filterValue} onFilterChange={setFilterValue} />
-      <div className="flex w-full justify-end items-center gap-5">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="self-end">
-              Data de criação <Calendar className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <input
-              type="date"
-              value={createdAtFilter}
-              placeholder="skdfksdjf"
-              className="p-2 w-[153px] block"
-              onChange={(e) => setCreatedAtFilter(e.target.value)}
-            />
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="self-end ">
-              Data de atualização <Calendar className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <input
-              type="date"
-              value={updatedAtFilter}
-              placeholder="skdfksdjf"
-              className="p-2 w-[153px] block "
-              onChange={(e) => setUpdatedAtFilter(e.target.value)}
-            />
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="self-end">
-              Colunas <ArrowUpDown className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => (
-                <DropdownMenuCheckboxItem
-                  key={column.id}
-                  className="capitalize"
-                  checked={column.getIsVisible()}
-                  onCheckedChange={(value) => column.toggleVisibility(!!value)}
-                >
-                  {column.id}
-                </DropdownMenuCheckboxItem>
-              ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline">
-              Status <ArrowUpDown className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <Button
-              className="block w-full"
-              variant="ghost"
-              onClick={() => setStatusFilter("all")}
-            >
-              Todos
-            </Button>
-            <Button
-              className="block w-full"
-              variant="ghost"
-              onClick={() => setStatusFilter("active")}
-            >
-              Ativos
-            </Button>
-            <Button
-              className="block w-full"
-              variant="ghost"
-              onClick={() => setStatusFilter("inactive")}
-            >
-              Inativos
-            </Button>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Modal
-              userId={id}
-              buttonText="Adicionar"
-              title="Adicionar Contato"
-              label="Adicione as informações sobre o contato."
-              onclick={handleClick}
-            />
-          </DropdownMenuTrigger>
-        </DropdownMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <ImportModal onclick={handleClick} userId={id} />
-          </DropdownMenuTrigger>
-        </DropdownMenu>
+      <div className="flex w-full justify-end items-center gap-5 max-xl:flex-col-reverse max-xl:justify-center max-md:justify-end max-md:flex-row">
+        <div className="flex items-center gap-5">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="self-end">
+                Data de criação <Calendar className="ml-2 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <input
+                type="date"
+                value={createdAtFilter}
+                placeholder="skdfksdjf"
+                className="p-2 w-[153px] block"
+                onChange={(e) => setCreatedAtFilter(e.target.value)}
+              />
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="self-end ">
+                Data de atualização <Calendar className="ml-2 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <input
+                type="date"
+                value={updatedAtFilter}
+                placeholder="skdfksdjf"
+                className="p-2 w-[153px] block "
+                onChange={(e) => setUpdatedAtFilter(e.target.value)}
+              />
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="self-end">
+                Colunas <ArrowUpDown className="ml-2 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => (
+                  <DropdownMenuCheckboxItem
+                    key={column.id}
+                    className="capitalize"
+                    checked={column.getIsVisible()}
+                    onCheckedChange={(value) =>
+                      column.toggleVisibility(!!value)
+                    }
+                  >
+                    {column.id}
+                  </DropdownMenuCheckboxItem>
+                ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        <div className="flex items-center gap-5">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">
+                Status <ArrowUpDown className="ml-2 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <Button
+                className="block w-full"
+                variant="ghost"
+                onClick={() => setStatusFilter("all")}
+              >
+                Todos
+              </Button>
+              <Button
+                className="block w-full"
+                variant="ghost"
+                onClick={() => setStatusFilter("active")}
+              >
+                Ativos
+              </Button>
+              <Button
+                className="block w-full"
+                variant="ghost"
+                onClick={() => setStatusFilter("inactive")}
+              >
+                Inativos
+              </Button>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Modal
+                userId={id}
+                buttonText="Adicionar"
+                title="Adicionar Contato"
+                label="Adicione as informações sobre o contato."
+                onclick={handleClick}
+              />
+            </DropdownMenuTrigger>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <ImportModal onclick={handleClick} userId={id} />
+            </DropdownMenuTrigger>
+          </DropdownMenu>
+        </div>
       </div>
     </div>
   );

@@ -87,7 +87,7 @@ const ImportModal = ({ onclick, userId }) => {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className={`w-[116px] flex items-center bg-black text-white `}
+          className={`w-[116px] flex items-center bg-black text-white max-md:mr-11 `}
         >
           Importar <Download className="h-4 w-4 ml-2" />
         </Button>
