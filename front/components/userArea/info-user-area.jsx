@@ -36,14 +36,14 @@ export default function InfoUserArea({ data }) {
   useEffect(() => {}, [dataLocation]);
 
   return (
-    <div className="mt-5">
-      <ul className="flex flex-col gap-4">
+    <div className="mt-5 max-sm:text-sm">
+      <ul className="flex flex-col gap-4 ">
         <li className="flex items-center gap-3">
-          <h4 className="font-medium text-lg">Nome:</h4>
+          <h4 className="font-medium text-lg max-sm:text-base">Nome:</h4>
           <span>{data.name.charAt(0).toUpperCase() + data.name.slice(1)}</span>
         </li>
         <li className="flex items-center gap-3">
-          <h4 className="font-medium text-lg">Email:</h4>
+          <h4 className="font-medium text-lg max-sm:text-base">Email:</h4>
           <span>{data.email}</span>
         </li>
       </ul>
@@ -51,7 +51,7 @@ export default function InfoUserArea({ data }) {
         <h3 className="mb-5 text-xl font-bold">Localização</h3>
         <FormLocation data={dataLocation} />
       </div>
-      <div className="flex items-center justify-center gap-32 mt-7">
+      <div className="flex items-center justify-center gap-32 mt-7 max-sm:flex-col-reverse max-sm:gap-3 max-sm:mt-16">
         <Button
           className="self-end bg-red-800 text-white w-full"
           asChild

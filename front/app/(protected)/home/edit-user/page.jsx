@@ -8,8 +8,8 @@ export default async function EditUserPage() {
 
   return (
     <div className="h-screen w-full flex justify-center items-center">
-      <div className="w-[500px] mx-auto flex justify-center items-center">
-        <Card className="w-[300px] shadow-md sm:w-full">
+      <div className="w-[500px] mx-auto flex justify-center items-center max-sm:w-11/12">
+        <Card className="shadow-md w-full ">
           <CardHeader>
             <Header title="Suas Informações" />
           </CardHeader>

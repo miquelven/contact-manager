@@ -1,6 +1,6 @@
 const LocationItem = ({ label, value }) => (
   <li className="flex items-center gap-3">
-    <h4 className="font-medium text-lg">{label}:</h4>
+    <h4 className="font-medium text-lg max-sm:text-base">{label}:</h4>
     {value ? (
       <span className="text-light">{value}</span>
     ) : (
