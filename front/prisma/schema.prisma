@@ -2,6 +2,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// conexão com banco
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
